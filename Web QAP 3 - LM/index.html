@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mo's Lawncare Services – Customer Invoice</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f2f3e7; margin: 0; padding: 0; }
+        .container {
+            max-width: 500px;
+            margin: 2em auto;
+            background: white;
+            padding: 1.5em;
+            border-radius: 5px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        h2 {
+            background-color: #edd27a;
+            padding: 0.4em;
+            margin-bottom: 1em;
+            text-align: center;
+        }
+        form div {
+            margin-bottom: 1em;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 0.3em;
+        }
+        input[type="text"], input[type="number"] {
+            width: 97%;
+            padding: 0.3em;
+            font-size: 1em;
+        }
+        button {
+            padding: 0.5em 2em;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        table {
+            width: 100%;
+            margin-top: 1.5em;
+            border-collapse: collapse;
+            background-color: #f5f5da;
+        }
+        td {
+            padding: 0.3em 0.6em;
+        }
+        .label {
+            font-weight: bold;
+        }
+        .cost, .total, .tax, .invoice {
+            text-align: right;
+        }
+        .total, .tax {
+            background-color: #fff8d0;
+        }
+        .invoice {
+            background-color: #faecaa;
+            font-weight: bold;
+        }
+        .highlight {
+            text-align: center;
+            background-color: #edd27a;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Mo’s Lawncare Services – Customer Invoice</h2>
+        <form id="lawnForm">
+            <div>
+                <label for="customerName">Name:</label>
+                <input type="text" id="customerName" required />
+            </div>
+            <div>
+                <label for="streetAddress">Street Address:</label>
+                <input type="text" id="streetAddress" required />
+            </div>
+            <div>
+                <label for="city">City:</label>
+                <input type="text" id="city" required />
+            </div>
+            <div>
+                <label for="phone">Phone Number (999-999-9999):</label>
+                <input type="text" id="phone" pattern="\d{3}-\d{3}-\d{4}" required />
+            </div>
+            <div>
+                <label for="squareFeet">Property size (in sq ft):</label>
+                <input type="number" id="squareFeet" min="1" required />
+            </div>
+            <button type="submit">Generate Invoice</button>
+        </form>
+
+        <div id="invoiceSection" style="display:none;">
+            <table>
+                <tr><td colspan="2" class="highlight">Customer details:</td></tr>
+                <tr><td colspan="2" id="custDetails"></td></tr>
+                <tr><td class="label">Property size (in sq ft):</td><td id="size" class="cost"></td></tr>
+                <tr><td class="label">Border cost:</td><td id="borderCost" class="cost"></td></tr>
+                <tr><td class="label">Mowing cost:</td><td id="mowingCost" class="cost"></td></tr>
+                <tr><td class="label">Fertilizer cost:</td><td id="fertilizerCost" class="cost"></td></tr>
+                <tr><td class="label total">Total charges:</td><td id="totalCharges" class="cost total"></td></tr>
+                <tr><td class="label tax">Sales tax (HST):</td><td id="salesTax" class="cost tax"></td></tr>
+                <tr><td class="label tax">Environmental tax:</td><td id="envTax" class="cost tax"></td></tr>
+                <tr><td class="label invoice">Invoice total:</td><td id="invoiceTotal" class="cost invoice"></td></tr>
+                <tr><td colspan="2" class="highlight">Turning Lawns into Landscapes</td></tr>
+            </table>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
